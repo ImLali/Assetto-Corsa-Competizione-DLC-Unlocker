@@ -1,0 +1,994 @@
+🟩│ 20:51:05.130 │  95:smoke_api.cpp            ┃ 🐨 SmokeAPI v2.0.5 | Compiled at 'Tue Mar 14 11:12:01 2023'
+⬛│ 20:51:05.130 │ 100:smoke_api.cpp            ┃ Process name: 'AC2-Win64-Shipping.exe' [64-bit]
+⬛│ 20:51:05.130 │ 223:hook.cpp                 ┃ Hooking initialization
+🟩│ 20:51:05.130 │  44:smoke_api.cpp            ┃ 🪝 Detected hook mode
+⬛│ 20:51:05.130 │  33:dll_monitor.cpp          ┃ Initializing DLL monitor
+⬛│ 20:51:05.130 │  85:dll_monitor.cpp          ┃ DLL monitor was successfully initialized
+🟩│ 20:51:05.130 │ 117:smoke_api.cpp            ┃ 🚀 Initialization complete
+⬛│ 20:51:05.152 │  58:dll_monitor.cpp          ┃ Library 'steamclient64' has been loaded
+⬛│ 20:51:05.152 │  43:hook.cpp                 ┃ Hooking 'CreateInterface' at 0x7ffb32794a10 via Detour
+⬛│ 20:51:05.153 │  18:hook.cpp                 ┃ [Polyhook] Original function:
+7ffb32794a10 [7]: 4c 8b 0d e9 3b 9a 00                    mov r9, qword ptr ds:[0x00007FFB33138600] -> 7ffb33138600
+7ffb32794a17 [3]: 4c 8b d2                                mov r10, rdx
+7ffb32794a1a [3]: 4c 8b d9                                mov r11, rcx
+7ffb32794a1d [3]: 4d 85 c9                                test r9, r9
+7ffb32794a20 [2]: 74 2e                                   jz 0x00007FFB32794A50 -> 7ffb32794a50
+7ffb32794a22 [4]: 49 8b 41 08                             mov rax, qword ptr ds:[r9+0x08]
+7ffb32794a26 [3]: 4d 8b c3                                mov r8, r11
+7ffb32794a29 [3]: 4c 2b c0                                sub r8, rax
+7ffb32794a2c [4]: 0f 1f 40 00                             nop dword ptr ds:[rax], eax
+7ffb32794a30 [3]: 0f b6 10                                movzx edx, byte ptr ds:[rax]
+7ffb32794a33 [5]: 42 0f b6 0c 00                          movzx ecx, byte ptr ds:[rax+r8*1]
+7ffb32794a38 [2]: 2b d1                                   sub edx, ecx
+7ffb32794a3a [2]: 75 07                                   jnz 0x00007FFB32794A43 -> 7ffb32794a43
+7ffb32794a3c [3]: 48 ff c0                                inc rax
+7ffb32794a3f [2]: 85 c9                                   test ecx, ecx
+7ffb32794a41 [2]: 75 ed                                   jnz 0x00007FFB32794A30 -> 7ffb32794a30
+7ffb32794a43 [2]: 85 d2                                   test edx, edx
+7ffb32794a45 [2]: 74 18                                   jz 0x00007FFB32794A5F -> 7ffb32794a5f
+7ffb32794a47 [4]: 4d 8b 49 10                             mov r9, qword ptr ds:[r9+0x10]
+7ffb32794a4b [3]: 4d 85 c9                                test r9, r9
+7ffb32794a4e [2]: 75 d2                                   jnz 0x00007FFB32794A22 -> 7ffb32794a22
+7ffb32794a50 [3]: 4d 85 d2                                test r10, r10
+7ffb32794a53 [2]: 74 07                                   jz 0x00007FFB32794A5C -> 7ffb32794a5c
+7ffb32794a55 [7]: 41 c7 02 01 00 00 00                    mov dword ptr ds:[r10], 0x01
+7ffb32794a5c [2]: 33 c0                                   xor eax, eax
+7ffb32794a5e [1]: c3                                      ret ret
+
+
+⬛│ 20:51:05.153 │  18:hook.cpp                 ┃ [Polyhook] Prologue to overwrite:
+7ffb32794a10 [7]: 4c 8b 0d e9 3b 9a 00                    mov r9, qword ptr ds:[0x00007FFB33138600] -> 7ffb33138600
+
+
+⬛│ 20:51:05.153 │  18:hook.cpp                 ┃ [Polyhook] Instructions needing translation:
+7ffb32794a10 [7]: 4c 8b 0d e9 3b 9a 00                    mov r9, qword ptr ds:[0x00007FFB33138600] -> 7ffb33138600
+
+
+⬛│ 20:51:05.153 │  18:hook.cpp                 ┃ [Polyhook] Trampoline address: 0x00000250675eda90
+⬛│ 20:51:05.153 │  18:hook.cpp                 ┃ [Polyhook] Translation:
+lea rsp, [rsp - 0x80]
+push rax
+push r15
+mov r15, 0x00007ffb33138600
+mov rax, [r15]
+mov r9, rax
+pop r15
+pop rax
+push rax
+mov rax, 0x00000250675eda97
+xchg [rsp], rax
+ret 0x0080
+
+
+⬛│ 20:51:05.153 │  18:hook.cpp                 ┃ [Polyhook] Translation address: 0x0000025068f00000
+
+⬛│ 20:51:05.153 │  18:hook.cpp                 ┃ [Polyhook] Jmp To Prol:
+250675eda97 [6]: ff 25 4b 00 00 00                       jmp [250675edae8] ->7ffb32794a17
+250675edae8 [8]: 17 4a 79 32 fb 7f 00 00                 dest holder 
+
+
+⬛│ 20:51:05.153 │  18:hook.cpp                 ┃ [Polyhook] m_trampoline: 0x00000250675eda90
+
+⬛│ 20:51:05.153 │  18:hook.cpp                 ┃ [Polyhook] m_trampolineSz: 0x0062
+
+⬛│ 20:51:05.153 │  18:hook.cpp                 ┃ [Polyhook] Trampoline:
+250675eda90 [5]: e9 08 00 00 00                          jmp 0x00000250675EDA9D -> 250675eda9d
+250675eda95 [2]: 66 90                                   nop nop
+250675eda97 [6]: ff 25 4b 00 00 00                       jmp qword ptr ds:[0x00000250675EDAE8] -> 7ffb32794a17
+
+
+⬛│ 20:51:05.154 │  18:hook.cpp                 ┃ [Polyhook] Trampoline Jmp Tbl:
+250675eda9d [6]: ff 25 3d 00 00 00                       jmp [250675edae0] ->25068f00000
+250675edae0 [8]: 00 00 f0 68 50 02 00 00                 dest holder 
+
+
+⬛│ 20:51:05.154 │  18:hook.cpp                 ┃ [Polyhook] Hook instructions: 
+7ffb32794a10 [6]: ff 25 ea b5 c8 b2                       jmp [7ffae5420000] ->7ffb3117bc30
+7ffae5420000 [8]: 30 bc 17 31 fb 7f 00 00                 dest holder 
+
+
+⬛│ 20:51:05.154 │  18:hook.cpp                 ┃ [Polyhook] Hook size: 7
+
+⬛│ 20:51:05.154 │  18:hook.cpp                 ┃ [Polyhook] Prologue offset: 6
+
+⬛│ 20:51:05.154 │ 107:dll_monitor.cpp          ┃ DLL monitor was successfully shut down
+⬛│ 20:51:05.166 │  14:steam_client.cpp         ┃ CreateInterface -> 'SteamClient017' @ 0x7ffb33042738
+⬛│ 20:51:05.166 │  92:steam_impl.cpp           ┃ Hooking interface 'SteamClient017'
+⬛│ 20:51:05.166 │ 177:hook.cpp                 ┃ Hooking 'ISteamClient_GetISteamApps' at [[0x7ffb33042738]+0x78] via virtual function swap
+⬛│ 20:51:05.166 │ 177:hook.cpp                 ┃ Hooking 'ISteamClient_GetISteamUser' at [[0x7ffb33042738]+0x28] via virtual function swap
+⬛│ 20:51:05.166 │ 177:hook.cpp                 ┃ Hooking 'ISteamClient_GetISteamGenericInterface' at [[0x7ffb33042738]+0x60] via virtual function swap
+⬛│ 20:51:05.166 │ 177:hook.cpp                 ┃ Hooking 'ISteamClient_GetISteamInventory' at [[0x7ffb33042738]+0x110] via virtual function swap
+⬛│ 20:51:05.166 │  14:steam_client.cpp         ┃ CreateInterface -> 'SteamClient014' @ 0x7ffb33042720
+⬛│ 20:51:05.166 │  92:steam_impl.cpp           ┃ Hooking interface 'SteamClient014'
+⬛│ 20:51:05.166 │ 177:hook.cpp                 ┃ Hooking 'ISteamClient_GetISteamApps' at [[0x7ffb33042720]+0x78] via virtual function swap
+⬛│ 20:51:05.166 │ 177:hook.cpp                 ┃ Hooking 'ISteamClient_GetISteamUser' at [[0x7ffb33042720]+0x28] via virtual function swap
+⬛│ 20:51:05.166 │ 177:hook.cpp                 ┃ Hooking 'ISteamClient_GetISteamGenericInterface' at [[0x7ffb33042720]+0x60] via virtual function swap
+⬛│ 20:51:05.323 │  14:steam_client.cpp         ┃ ISteamClient_GetISteamUser -> 'SteamUser017' @ 0x2506b191120
+⬛│ 20:51:05.323 │  92:steam_impl.cpp           ┃ Hooking interface 'SteamUser017'
+⬛│ 20:51:05.323 │ 177:hook.cpp                 ┃ Hooking 'ISteamUser_UserHasLicenseForApp' at [[0x2506b191120]+0x88] via virtual function swap
+⬛│ 20:51:05.323 │  14:steam_client.cpp         ┃ ISteamClient_GetISteamGenericInterface -> 'STEAMAPPTICKET_INTERFACE_VERSION001' @ 0x2506b1b0b60
+⬛│ 20:51:05.731 │  14:steam_client.cpp         ┃ CreateInterface -> 'SteamClient017' @ 0x7ffb33042738
+⬛│ 20:51:05.731 │ 148:steam_impl.cpp           ┃ Interface SteamClient017 at 0x7ffb33042738 has already been hooked.
+⬛│ 20:51:05.731 │  92:steam_impl.cpp           ┃ Hooking interface 'SteamClient017'
+⬛│ 20:51:05.731 │ 169:hook.cpp                 ┃ Function 'ISteamClient_GetISteamApps' is already hooked. Skipping virtual function swap
+⬛│ 20:51:05.731 │ 169:hook.cpp                 ┃ Function 'ISteamClient_GetISteamUser' is already hooked. Skipping virtual function swap
+⬛│ 20:51:05.731 │ 169:hook.cpp                 ┃ Function 'ISteamClient_GetISteamGenericInterface' is already hooked. Skipping virtual function swap
+⬛│ 20:51:05.731 │ 169:hook.cpp                 ┃ Function 'ISteamClient_GetISteamInventory' is already hooked. Skipping virtual function swap
+⬛│ 20:51:05.731 │  14:steam_client.cpp         ┃ CreateInterface -> 'SteamClient020' @ 0x7ffb33042750
+⬛│ 20:51:05.731 │  92:steam_impl.cpp           ┃ Hooking interface 'SteamClient020'
+⬛│ 20:51:05.731 │ 177:hook.cpp                 ┃ Hooking 'ISteamClient_GetISteamApps' at [[0x7ffb33042750]+0x78] via virtual function swap
+⬛│ 20:51:05.731 │ 177:hook.cpp                 ┃ Hooking 'ISteamClient_GetISteamUser' at [[0x7ffb33042750]+0x28] via virtual function swap
+⬛│ 20:51:05.731 │ 177:hook.cpp                 ┃ Hooking 'ISteamClient_GetISteamGenericInterface' at [[0x7ffb33042750]+0x60] via virtual function swap
+⬛│ 20:51:05.731 │ 177:hook.cpp                 ┃ Hooking 'ISteamClient_GetISteamInventory' at [[0x7ffb33042750]+0x118] via virtual function swap
+⬛│ 20:51:05.761 │  14:steam_client.cpp         ┃ ISteamClient_GetISteamUser -> 'SteamUser020' @ 0x2506b191120
+⬛│ 20:51:05.761 │ 148:steam_impl.cpp           ┃ Interface SteamUser020 at 0x2506b191120 has already been hooked.
+⬛│ 20:51:05.761 │  92:steam_impl.cpp           ┃ Hooking interface 'SteamUser020'
+⬛│ 20:51:05.761 │ 177:hook.cpp                 ┃ Hooking 'ISteamUser_UserHasLicenseForApp' at [[0x2506b191120]+0x88] via virtual function swap
+⬛│ 20:51:05.761 │  14:steam_client.cpp         ┃ ISteamClient_GetISteamGenericInterface -> 'SteamUtils009' @ 0x2506b1b0b40
+⬛│ 20:51:05.761 │  14:steam_client.cpp         ┃ ISteamClient_GetISteamGenericInterface -> 'SteamUser020' @ 0x2506b191120
+⬛│ 20:51:05.761 │ 148:steam_impl.cpp           ┃ Interface SteamUser020 at 0x2506b191120 has already been hooked.
+⬛│ 20:51:05.761 │  92:steam_impl.cpp           ┃ Hooking interface 'SteamUser020'
+⬛│ 20:51:05.761 │ 169:hook.cpp                 ┃ Function 'ISteamUser_UserHasLicenseForApp' is already hooked. Skipping virtual function swap
+⬛│ 20:51:05.761 │  14:steam_client.cpp         ┃ ISteamClient_GetISteamGenericInterface -> 'SteamFriends017' @ 0x2506b1b0b50
+⬛│ 20:51:05.761 │  14:steam_client.cpp         ┃ ISteamClient_GetISteamGenericInterface -> 'STEAMREMOTESTORAGE_INTERFACE_VERSION014' @ 0x2506b1b0b80
+⬛│ 20:51:05.761 │  14:steam_client.cpp         ┃ ISteamClient_GetISteamGenericInterface -> 'STEAMUSERSTATS_INTERFACE_VERSION011' @ 0x2506b1b0b90
+⬛│ 20:51:05.761 │  14:steam_client.cpp         ┃ ISteamClient_GetISteamGenericInterface -> 'SteamMatchMakingServers002' @ 0x2506b1b0ba0
+⬛│ 20:51:05.761 │  14:steam_client.cpp         ┃ ISteamClient_GetISteamGenericInterface -> 'STEAMAPPS_INTERFACE_VERSION008' @ 0x2506b191660
+⬛│ 20:51:05.761 │  92:steam_impl.cpp           ┃ Hooking interface 'STEAMAPPS_INTERFACE_VERSION008'
+⬛│ 20:51:05.761 │ 177:hook.cpp                 ┃ Hooking 'ISteamApps_BIsSubscribedApp' at [[0x2506b191660]+0x30] via virtual function swap
+⬛│ 20:51:05.761 │ 177:hook.cpp                 ┃ Hooking 'ISteamApps_BIsDlcInstalled' at [[0x2506b191660]+0x38] via virtual function swap
+⬛│ 20:51:05.761 │ 177:hook.cpp                 ┃ Hooking 'ISteamApps_GetDLCCount' at [[0x2506b191660]+0x50] via virtual function swap
+⬛│ 20:51:05.761 │ 177:hook.cpp                 ┃ Hooking 'ISteamApps_BGetDLCDataByIndex' at [[0x2506b191660]+0x58] via virtual function swap
+⬛│ 20:51:05.761 │  14:steam_client.cpp         ┃ ISteamClient_GetISteamGenericInterface -> 'SteamNetworking006' @ 0x2506b1b0bb0
+⬛│ 20:51:05.761 │  14:steam_client.cpp         ┃ ISteamClient_GetISteamGenericInterface -> 'SteamMatchMaking009' @ 0x2506b1b0bc0
+⬛│ 20:51:10.292 │  14:steam_client.cpp         ┃ CreateInterface -> 'SteamClient006' @ 0x7ffb330426e0
+⬛│ 20:51:10.292 │  92:steam_impl.cpp           ┃ Hooking interface 'SteamClient006'
+⬛│ 20:51:10.292 │ 177:hook.cpp                 ┃ Hooking 'ISteamClient_GetISteamApps' at [[0x7ffb330426e0]+0x80] via virtual function swap
+⬛│ 20:51:10.292 │ 177:hook.cpp                 ┃ Hooking 'ISteamClient_GetISteamUser' at [[0x7ffb330426e0]+0x30] via virtual function swap
+🟩│ 20:51:10.292 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:10.292 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1337860, Unlocked: true
+🟩│ 20:51:10.292 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 20:51:10.292 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:10.292 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865950, Unlocked: true
+🟩│ 20:51:10.292 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:10.292 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:51:10.292 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 20:51:10.292 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 20:51:16.133 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1337860, Unlocked: true
+🟩│ 20:51:16.143 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:51:38.278 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:51:38.392 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 20:51:42.282 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 20:51:42.282 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:42.282 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:42.282 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:42.282 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:42.282 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:42.282 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:42.282 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:42.282 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:42.282 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:42.282 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:42.282 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:51:42.282 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 20:51:42.282 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 20:51:42.296 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:51:42.298 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:42.298 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1337860, Unlocked: true
+🟩│ 20:51:42.298 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:42.298 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 20:51:42.298 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:51:42.298 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 20:51:49.306 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:51:49.500 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 20:51:51.288 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 20:51:51.289 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:51.289 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1337860, Unlocked: true
+🟩│ 20:51:51.289 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:51.289 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 20:51:51.295 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.013 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:51:54.014 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:52:52.804 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 20:52:52.805 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:52:52.805 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1337860, Unlocked: true
+🟩│ 20:52:52.805 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:52:52.805 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 20:52:52.811 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:52:52.812 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:52:52.814 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:53:14.479 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:53:14.484 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:53:36.354 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:53:36.354 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:53:36.354 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:53:39.633 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:53:39.641 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 20:53:39.642 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 20:53:39.642 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1337860, Unlocked: true
+🟩│ 20:53:39.642 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 20:53:39.642 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 20:53:39.648 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:53:39.649 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:53:39.649 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:53:39.650 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:53:39.650 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:53:46.596 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:53:46.596 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:53:46.596 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 20:53:46.596 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:41.315 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1337860, Unlocked: true
+🟩│ 22:03:41.316 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:42.690 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:03:42.691 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:42.691 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1337860, Unlocked: true
+🟩│ 22:03:42.692 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:42.692 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:03:42.705 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:42.708 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:42.708 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:42.728 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:42.728 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:44.121 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:44.122 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:53.165 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:03:53.166 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:53.166 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1337860, Unlocked: true
+🟩│ 22:03:53.166 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:53.166 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:03:53.172 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:53.173 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:03:53.173 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:53.174 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:03:53.174 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:58.169 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:03:58.169 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:03:58.169 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1337860, Unlocked: true
+🟩│ 22:03:58.169 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:03:58.170 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:03:58.176 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:58.177 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:03:58.177 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:03:58.178 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:03:58.178 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:04:01.155 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:04:01.161 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:04:01.167 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:04:01.167 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:04:01.167 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:04:02.826 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:04:06.119 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:04:06.119 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:04:06.120 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1337860, Unlocked: true
+🟩│ 22:04:06.120 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:04:06.120 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:04:06.126 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:04:06.127 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:04:06.128 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:04:10.384 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:04:10.384 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:04:53.336 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:04:53.336 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:44:50.723 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1337860, Unlocked: true
+🟩│ 22:44:50.724 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:44:52.042 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:44:52.042 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:52.042 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1337860, Unlocked: true
+🟩│ 22:44:52.042 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:52.042 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:44:52.048 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:44:52.049 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:44:52.060 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:44:54.468 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:44:54.468 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:44:54.468 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:44:54.468 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:44:54.468 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.468 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.468 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.468 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.468 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.468 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.468 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.468 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.468 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.468 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.468 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:44:54.468 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:44:54.468 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:44:54.468 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:44:54.468 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.468 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.468 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:44:54.469 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:45:17.315 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:45:17.315 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:45:17.315 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1337860, Unlocked: true
+🟩│ 22:45:17.315 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:45:17.316 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:45:17.322 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:45:21.562 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:45:21.568 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:45:38.612 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:45:39.548 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:45:39.548 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:45:39.548 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1337860, Unlocked: true
+🟩│ 22:45:39.548 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:45:39.548 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:45:39.555 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:45:41.697 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:45:41.702 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 22:45:47.458 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 22:45:47.458 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 22:45:47.458 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1337860, Unlocked: true
+🟩│ 22:45:47.458 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 22:45:47.458 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 22:45:47.464 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 23:28:01.552 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1337860, Unlocked: true
+🟩│ 23:28:01.553 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 23:28:02.903 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 23:28:02.903 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:02.903 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1337860, Unlocked: true
+🟩│ 23:28:02.903 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:02.903 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 23:28:02.910 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700610, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1865970, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:09.415 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:33.193 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 23:28:33.194 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:33.194 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1337860, Unlocked: true
+🟩│ 23:28:33.194 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:33.194 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 23:28:33.201 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 23:28:38.161 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 23:28:38.167 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true
+🟩│ 23:28:54.681 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1449260, Unlocked: true
+🟩│ 23:28:54.682 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1201360, Unlocked: true
+🟩│ 23:28:54.682 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1337860, Unlocked: true
+🟩│ 23:28:54.682 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  1493170, Unlocked: true
+🟩│ 23:28:54.682 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2700600, Unlocked: true
+🟩│ 23:28:54.689 │  85:steam_apps.cpp           ┃ ISteamApps_BIsDlcInstalled -> App ID:   805550, DLC ID:  2328720, Unlocked: true

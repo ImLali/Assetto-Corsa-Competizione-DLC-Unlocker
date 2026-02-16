@@ -1,0 +1,23 @@
+20:51:04 [13080] ======================
+20:51:04 [13080] VR Performance Toolkit
+20:51:04 [13080] ======================
+
+20:51:04 [13080] Current configuration:
+20:51:04 [13080]   Upscaling (FSR) is enabled
+20:51:04 [13080]     * Render scale: 0.85
+20:51:04 [13080]     * Sharpness:    1
+20:51:04 [13080]     * Radius:       0.6
+20:51:04 [13080]     * MIP bias:     enabled
+20:51:04 [13080]   Fixed foveated rendering (VRS) is enabled
+20:51:04 [13080]     * Inner radius: 0.6
+20:51:04 [13080]     * Mid radius:   0.8
+20:51:04 [13080]     * Outer radius: 1
+20:51:04 [13080]   Debug mode is disabled
+20:51:04 [13080] Installing hook for LoadLibraryA from 00007FFBACF59460 to 00007FFB317ED390
+20:51:04 [13080] Installing hook for LoadLibraryExA from 00007FFBACF58070 to 00007FFB317ED500
+20:51:04 [13080] Installing hook for LoadLibraryW from 00007FFBACF58D80 to 00007FFB317ED790
+20:51:05 [13080] Installing hook for LoadLibraryExW from 00007FFBACF53DB0 to 00007FFB317ED640
+20:51:05 [13080] d3d11.dll is loaded in the process, installing hooks...
+20:51:05 [13080] Installing hook for D3D11CreateDevice from 00007FFBA8F228E0 to 00007FFB317CCBD0
+20:51:05 [13080] Installing hook for D3D11CreateDeviceAndSwapChain from 00007FFBA8F229F0 to 00007FFB317CD050
+20:51:05 [13080] Loading DLL at "C:\\Windows\\system32\\dxgi.dll"

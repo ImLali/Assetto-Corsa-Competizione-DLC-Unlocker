@@ -1,0 +1,14 @@
+C:\Users\Lali\source\repos\Installer\Installer\bin\Release\net10.0-windows\publish\Installer.exe
+C:\Users\Lali\source\repos\Installer\Installer\bin\Release\net10.0-windows\publish\content\dxgi.dll
+C:\Users\Lali\source\repos\Installer\Installer\bin\Release\net10.0-windows\publish\content\SmokeAPI.config.json
+C:\Users\Lali\source\repos\Installer\Installer\bin\Release\net10.0-windows\publish\content\SmokeAPI.dll
+C:\Users\Lali\source\repos\Installer\Installer\bin\Release\net10.0-windows\publish\content\SmokeAPI.log.log
+C:\Users\Lali\source\repos\Installer\Installer\bin\Release\net10.0-windows\publish\content\steam_api.dll
+C:\Users\Lali\source\repos\Installer\Installer\bin\Release\net10.0-windows\publish\content\turbojpeg.dll
+C:\Users\Lali\source\repos\Installer\Installer\bin\Release\net10.0-windows\publish\content\version.dll
+C:\Users\Lali\source\repos\Installer\Installer\bin\Release\net10.0-windows\publish\content\vrperfkit.log
+C:\Users\Lali\source\repos\Installer\Installer\bin\Release\net10.0-windows\publish\content\vrperfkit.yml
+C:\Users\Lali\source\repos\Installer\Installer\bin\Release\net10.0-windows\publish\Installer.dll
+C:\Users\Lali\source\repos\Installer\Installer\bin\Release\net10.0-windows\publish\Installer.deps.json
+C:\Users\Lali\source\repos\Installer\Installer\bin\Release\net10.0-windows\publish\Installer.runtimeconfig.json
+C:\Users\Lali\source\repos\Installer\Installer\bin\Release\net10.0-windows\publish\Installer.pdb
