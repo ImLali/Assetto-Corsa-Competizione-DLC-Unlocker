@@ -1,5 +1,5 @@
-===========================================================
- Assetto Corsa Competizione – DLC UNLOCKER
+[ Assetto Corsa Competizione – DLC UNLOCKER ]
+
 ===========================================================
 
  Lightweight installer for unlocking DLC content for ACC
