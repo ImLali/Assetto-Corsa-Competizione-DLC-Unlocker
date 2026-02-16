@@ -22,7 +22,7 @@
  INSTALLATION
 -----------------------------------------------------------
 
-  1. Download the LATEST RELEASE on github from ACCC.
+  1. Download the LATEST RELEASE on github from ACCC (https://github.com/ImLali/Assetto-Corsa-Competizione-DLC-Unlocker/releases/tag/DLC_Unlocker).
   2. Extract the archive.
   3. Run the executable file.
 
@@ -36,8 +36,7 @@
  DEFAULT GAME LOCATION (STEAM)
 -----------------------------------------------------------
 
-  C:\Program Files (x86)\Steam\steamapps\common\
-  Assetto Corsa Competizione
+  C:\Program Files (x86)\Steam\steamapps\common\Assetto Corsa Competizione
 
 -----------------------------------------------------------
  USAGE
